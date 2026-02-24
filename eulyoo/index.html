@@ -11,14 +11,16 @@
     <!-- 내가 만든 파일 연결 -->
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js"></script>
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
     <title>을유문화사</title>
 </head>
 <body>
     <div id="wrap">
         <!-- header가 상단에 고정되면 fixed 클래스 (pc/mobile 공통)
              pc버전에서 메뉴에 마우스를 올리면 menu_over
-             mobile버전에서 메뉴를 클릭해서 열면 menu_open 클래스 추가 -->
-        <header class="header   menu_over">
+             mobile버전에서 메뉴를 클릭해서 열면 menu_open 클래스 추가 
+             header가 상단에 고정되면 fixed 클래스 추가 -->
+        <header class="header">
             <h1 class="logo"><a href="index.html"><span class="sr-only">을유문화사</span></a></h1>
             <nav class="gnb">
                 <button class="gnb_open">
@@ -28,7 +30,7 @@
                     </svg>
                 </button>
                 <div class="gnb_wrap">
-                    <div class="gnb_logo"><span>을유문화사</span></div>
+                    <div class="gnb_logo"><span class="sr-only">을유문화사</span></div>
                     <ul class="depth1">
                         <!-- pc에서는 over 클래스를 줌
                              mobile버전에서는 open 클래스를 줌 -->
@@ -42,7 +44,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#n"><span>콘텐츠</span></a>
+                            <a href="https://www.ssyenc.com"><span>콘텐츠</span></a>
                             <ul class="depth2">
                                 <li><a href="#n"><span>스테디셀러</span></a></li>
                                 <li><a href="#n"><span>전체 도서</span></a></li>
@@ -66,7 +68,7 @@
                         </li>
                     </ul><!--//depth1-->
                     <button class="gnb_close">
-                        <span>메뉴 닫기</span>
+                        <span class="sr-only">메뉴 닫기</span>
                         <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 20L0 18L8 10L0 2L2 0L10 8L18 0L20 2L12 10L20 18L18 20L10 12L2 20Z" />
                         </svg>
