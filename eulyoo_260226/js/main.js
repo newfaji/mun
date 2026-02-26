@@ -98,6 +98,11 @@ $(document).ready(function(){
             $('.header').removeClass('menu_over')
         }
     })
+    $('.header').on('mouseleave', function(){
+        if(device_status == 'pc'){
+            $('.header').removeClass('menu_over')
+        }
+    })
     $('.header .util .search .search_open').on('focusin', function(){
         if(device_status == 'pc'){
             $('.header').removeClass('menu_over')
@@ -105,39 +110,35 @@ $(document).ready(function(){
     })
 
     
+    /* 모바일 메뉴 
+        닫힌 메뉴를 클릭하면 열림 (기존에 열려있던 메뉴가 있으면 닫음)
+        열려있는 메뉴를 클릭면 닫힘
+        --> li에 open 클래스가 있으면 열림 .... 
+    */
     $('.header .gnb .gnb_wrap ul.depth1 > li > a').on('click', function(e){
         if(device_status == 'mo'){
-            e.preventDefault() //href 링크 이동을 막는 명령
-            //내가 클릭한 a를 감싸는 li에 open 클래스가 있는지 확인
+            e.preventDefault()
             let gnb_open = $(this).parents('li').hasClass('open')
-            //console.log(gnb_open)
-            if(gnb_open == true){//열려있는 경우
+            console.log(gnb_open)
+            if(gnb_open == true){ //열려있는 상태라면
                 $(this).parents('li').removeClass('open')
-                $(this).next().slideUp(300, function(){
-                    //slideUp 끝나고 나서 그 다음에 실행 
-                    // --- 이 함수 안에서는 효과를 주는 $(this).next() -> $(this)가 됨
-                    // slideup으로 메뉴를 접으면 html에 style="display:none"이 쓰여서
-                    // 다른 스타일이 적용되지 않음 그래서 아예 지워버림
-                    $(this).removeAttr('style')
-                })
-            }else{//닫힌 경우
+                $(this).next().slideUp()
+            }else{//닫혀있는 상태
                 $('.header .gnb .gnb_wrap ul.depth1 > li').removeClass('open')
-                $('.header .gnb .gnb_wrap ul.depth1 > li > ul.depth2').slideUp(300, function(){
-                    //slideUp 끝나고 나서 그 다음에 실행
-                    $(this).removeAttr('style')
-                })
+                $('.header .gnb .gnb_wrap ul.depth1 > li > ul.depth2').slideUp()
                 $(this).parents('li').addClass('open')
                 $(this).next().slideDown()
             }
         }
     })
-    
+
     $('.header .gnb .gnb_open').on('click', function(){
         $('.header').addClass('menu_open')
     })
     $('.header .gnb .gnb_wrap .gnb_close').on('click', function(){
         $('.header').removeClass('menu_open')
     })
+
 
 
     /************************************
@@ -161,5 +162,53 @@ $(document).ready(function(){
     $(window).scroll(function(){
         scroll_chk() //함수의 호출 - 브라우저가 스크롤 될때마다
     })
+
+
+    //book swiper 팝업
+    const book_swiper = new Swiper('.book .swiper', { /* 팝업을 감싼는 요소의 class명 */
+        slidesPerView: 'auto', /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        spaceBetween: 16, /* 팝업과 팝업 사이 여백 */
+        breakpoints: {
+            769: {    /* 640px 이상일때 적용 */
+                slidesPerView: 'auto',    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 24,
+            },
+        },
+        //centeredSlides: true, /* 팝업을 화면에 가운데 정렬(가운데 1번이 옴) */
+        // loop: true,  /* 마지막 팝업에서 첫번째 팝업으로 자연스럽게 넘기기 */
+        navigation: {
+            nextEl: '.book .next',
+            prevEl: '.book .prev',
+        },
+    });
+
+    /***************
+     * story swiper
+     * *********** */
+    const story_swiper = new Swiper('.story .swiper', { /* 팝업을 감싼는 요소의 class명 */
+        slidesPerView: 'auto', /* 한번에 보일 팝업의 수 - 모바일 제일 작은 사이즈일때 */
+        spaceBetween: 16, /* 팝업과 팝업 사이 여백 */
+        breakpoints: {
+            769: {    /* 640px 이상일때 적용 */
+                slidesPerView: 3,    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 24,
+            },
+            1025: {    /* 640px 이상일때 적용 */
+                slidesPerView: 4,    /*    'auto'   라고 쓰면 css에서 적용한 넓이값이 적용됨 */
+                spaceBetween: 24,
+            },
+        },
+        navigation: {
+            nextEl: '.story .next',
+            prevEl: '.story .prev',
+        },
+    });
+
+    /* aos animation */
+    AOS.init({
+        offset: 200, // 해당 콘텐츠가 하단에서 몇 px 위로 올라와에 나타나는 효과가 나타날지 셋팅하는 값
+        duration: 500, // 애니메이션 효과가 작동되는 시간
+        easing: 'ease', // 가속도
+    });
 
 })//document.ready
