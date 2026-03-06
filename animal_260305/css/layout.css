@@ -370,6 +370,99 @@
     }
 
 }/*media*/
+.container{
+    position: relative;
+    z-index: 10;
+    background-color: #fff;
+    margin-bottom: 300px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    /* container 내부 요소가 준 위아래 margin을 적용하기 위해서 */
+}
 .footer {
-    margin: 2000px 0 0 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--font-color-tit);
+    color: var(--color-w80);
+    padding: clamp(63px, 7.7vw, 77px) 0 clamp(71px, 7.9vw, 79px) 0;
+}
+.footer .wrapper{
+    position: relative; /* top 정렬의 기준 */
+}
+.footer .top{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-sub1);
+    background-image: var(--icon-arrow-w);
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: rotate(-90deg);
+    background-size: 10px;
+}
+.footer .top span{
+    display: none;
+}
+.footer .f_nav ul{
+    display: flex; /* li를 좌우에 배치 */
+    flex-wrap: wrap;
+    gap: 5px 39px;
+}
+.footer .f_nav ul li{
+    position: relative; /* after 정렬의 기준 */
+}
+.footer .f_nav ul li::after{
+    content: "";
+    position: absolute;
+    right: -24px;
+    top: 6px;
+    width: 1px;
+    height: 11px;
+    background-color: var(--color-w20);
+}
+.footer .f_nav ul li:last-child::after{
+    display: none; /* 마지막 li의 after 삭제 */
+}
+.footer .f_info{
+    margin: clamp(28px, 3.4vw, 34px) 0 34px;
+}
+.footer .f_info span{
+    display: inline-block;
+    margin-right: 26px;
+}
+@media screen and (max-width: 768px){
+    .footer{
+        padding-top: 115px;
+    }
+    .footer .top{
+        right: 50%;
+        transform: translateX(50%) rotate(0);
+        top: -85px;
+        width: 96px;
+        border-radius: 25px;
+        background-image: none;
+        color: var(--color-white);
+    }
+    .footer .top::before{
+        content: "";
+        position: absolute;
+        left: calc(50% - 4px);
+        top: 11px;
+        width: 8px;
+        height: 14px;
+        background-image: var(--icon-arrow-w);
+        background-position: center center;
+        background-size: 8px;
+        background-repeat: no-repeat;
+        transform: rotate(-90deg);
+    }
+    .footer .top span{
+        display: block;
+        padding-top: 20px;
+    }
 }

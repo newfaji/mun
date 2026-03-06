@@ -14,7 +14,7 @@ $(document).ready(function () {
         } else {
             device_status = "mo";
         }
-        console.log(device_status);
+        //console.log(device_status);
     }
 
     device_chk(); //문서가 로딩되었을때 단 1번 실행
@@ -94,6 +94,27 @@ $(document).ready(function () {
         if (device_status == "mo") {
              $('.header').removeClass('menu_open')
         }
+    })
+
+
+    /* top버튼을 클릭하면 상단으로 스크롤 */
+    $('.footer .top').on('click', function(){
+        $('html, body').animate({
+            scrollTop: 0
+        }, 500)
+    })
+
+    /* footer의 높이를 계산해서 container의 하단 여백으로 줌 */
+    let footer_h //foter 높이
+
+    function footer_count(){ //함수의 정의
+        footer_h = $('.footer').outerHeight()
+        console.log(footer_h)
+        $('.container').css('margin-bottom', footer_h)
+    }
+    footer_count() //함수실행(호출), html이 로딩된 이후 1번만
+    $(window).resize(function(){
+        footer_count() //함수실행(호출), 브라우저가 리사이즈 될때마다 1번씩
     })
 
 });

@@ -236,22 +236,10 @@
 }/*@media*/
 
 .message{
-    height: 400vh;
-    border: 1px solid blue;
-    position: relative;
-}
-.message::before{
-    content: "123456789123456789123456789123456789";
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-size: 200px;
-    color: #ccc;
-    writing-mode: vertical-rl;
+    height: 300vh;
 }
 .message .inner{
     height: calc(100vh - var(--header-h));
-    border: 1px solid red;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -261,13 +249,15 @@
 }
 .message p{
     text-align: center;
-    font-size: 60px;
+    font-size: min(60px, 6vw); 
     font-weight: var(--font-weight-bold);
     color: #ccc;
     white-space: nowrap;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative; /* img 정렬의 기준 */
+    /* border: 1px solid red; */
 }
 .message p strong{
     position: relative; /* span태그 정렬의 기준 */
@@ -281,3 +271,307 @@
     overflow: hidden;
     color: var(--color-main);
 }
+.message img{
+    position: absolute;
+}
+.message img.sun{
+    right: -20%;
+    top: -45%;
+    width: 32%; /* p태그의 넓이의 몇% */
+    animation: up_down 3s linear infinite;
+}
+.message img.cat{
+    right: -21%;
+    bottom: -36%;
+    width: 28%;
+    animation: left_right 3s linear infinite;
+}
+.message img.born{
+    right: 7%;
+    bottom: -45%;
+    width: 11%;
+    animation: left_right 3s linear infinite;
+}
+.message img.dog{
+    left: -20%;
+    bottom: -36%;
+    width: 21%;
+    animation: up_down 4s linear infinite;
+}
+.message img.flower{
+    left: -4%;
+    top: -23%;
+    width: 10%;
+    animation: rotate 3s linear infinite;
+}
+@keyframes up_down {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-10%);}
+    100% {transform: translateY(0);}
+}
+@keyframes rotate {
+    0% {transform: rotate(10deg);}
+    50% {transform: rotate(-10deg);}
+    100% {transform: rotate(10deg);}
+}
+@keyframes left_right {
+    0% {transform: translateX(0%);}
+    50% {transform: translateX(-10%);}
+    100% {transform: translateX(0%);}
+}
+
+@media screen and (max-width:1280px){
+            .message img.sun{
+                right: -5%;
+                top: -45%;
+            }
+            .message img.cat{
+                right: -1%;
+                bottom: -51%;
+            }
+            .message img.born{
+                right: 28%;
+                bottom: -56%;
+            }
+            .message img.dog{
+                left: -7%;
+                bottom: -49%;
+            }
+            .message img.flower{
+                left: -4%;
+                top: -23%;
+            }
+}/*media*/
+@media screen and (max-width:768px){
+            .message img.sun{
+                right: 15%;
+                top: -78%;
+            }
+            .message img.cat{
+                right: 8%;
+                bottom: -96%;
+            }
+            .message img.born{
+                right: 36%;
+                bottom: -106%;
+            }
+            .message img.dog{
+                left: 11%;
+                bottom: -69%;
+            }
+            .message img.flower{
+                left: 14%;
+                top: -51%;
+            }
+}/*media*/
+
+.adopt{
+    background-color: var(--color-main);
+    color: var(--color-white);
+    padding: clamp(106px, 16.2vw, 162px) 0 clamp(159px, 30vw, 300px) 0;
+    text-align: center;
+    position: relative; /* rolling_wrap 정렬의 기준 */
+}
+.adopt h2{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    margin: 0 0 clamp(29px, 4.8vw, 48px) 0;
+}
+.adopt .list_item{
+    width: clamp(240px, 34.2vw, 342px);
+    /* margin: 0 calc(var(--gap) / 2); */
+    margin: 0 -5px;
+    transform: scale3d(0.9, 0.9, 1);
+    opacity: 0.8;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.adopt .list_item.slick-center{
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+}
+.adopt .list_item a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.adopt .list_item a .photo{
+    overflow: hidden;
+    height: clamp(240px, 34.2vw, 342px);
+    border-radius: 50%;
+}
+.adopt .list_item a .photo img{
+    width: 100%; /* 높이가 비율에 맞게 */
+    height: 100%;
+    object-fit: cover;
+}
+.adopt .list_item a strong{
+    position: relative;
+    z-index: 1; /* z-index는 position값 필수 */
+    display: block;
+    background-color: var(--color-sub2);
+    padding: 1px 19px;
+    border-radius: 15px;
+    margin: -15px 0 11px 0; /* margin은 마이너스값이 가능 */
+}
+.adopt .list_item a strong.tmp{
+    background-color: var(--color-sub1);
+}
+.adopt .list_item a span{
+    display: block;
+}
+.adopt .rolling_wrap{
+    position: absolute;
+    left: 0;
+    bottom: clamp(18px, 2.2vw, 22px);
+    font-size: clamp(50px, 10vw, 100px);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-w20);
+    white-space: nowrap;
+    height: 1.5em;
+    width: 100%; /* 가로스크롤바때문에 */
+    overflow-x: hidden;
+}
+.adopt .rolling_wrap .rolling{
+    position: absolute; 
+    /* 글자의 길이대로 넓이를 인식할 요소가 필요해서 
+        일반 글자는 글자가 길면 줄바꿈이 됨... white-space:nowarp으로 줄바꿈 금지
+        가로 스크롤 생김 
+        가로 스크롤바가 안생기게 막으면 브라우저의 넓이만큼만 인식
+        --- absolute로 주고 넓이를 안주면 글자가 존재하는 만큼 넓이로 인식 */
+    left: 0;
+    bottom: 0;
+    /* transform: translateX(-50%); 나의 길이를 기준으로 %를 계산함 */
+    animation: adopt_roll 15s linear infinite;
+}
+@keyframes adopt_roll {
+    0%{transform: translateX(0);}
+    100%{transform: translateX(-50%);}
+}
+
+@media screen and (max-width:768px){
+    .adopt .slick-track{
+        margin-left: var(--wrapper-margin);
+    }
+    .adopt .list_item{
+        margin: 0 calc(var(--gap) / 2);
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+    }
+    .adopt .list_item a .photo{
+        border-radius: 10px;
+    }
+}
+
+.review{
+    margin: clamp(110px, 16.7vw, 167px) 0 clamp(95px, 12vw, 120px) 0;
+}
+.review .wrapper{
+    position: relative; /* more 정렬의 기준 */
+}
+.review h2{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-bold);
+    color: var(--font-color-tit);
+    line-height: var(--line-height-tit);
+    margin: 0 0 clamp(20px, 5vw, 50px) 0;
+    border-bottom: 1px solid #ededed;
+    padding-bottom: 8px; /* border랑 글자 여백 */
+}
+.review .list_wrap{
+    width: calc(100% + var(--gap));
+}
+.review .list_item{
+    width: clamp(240px, 34.2vw, 342px);
+    margin: 0 var(--gap) 0 0;
+}
+.review .list_item a{
+    display: block;
+}
+.review .list_item a .photo{
+    overflow: hidden;
+    height: clamp(240px, 34.2vw, 342px);
+}
+.review .list_item a .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.review .list_item a h3{
+    font-size: var(--font-size-subtit);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    color: var(--font-color-tit);
+    margin: clamp(20px, 2.8vw, 28px) 0 clamp(10px, 1.1vw, 11px) 0;
+    /* 1줄제한 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.review .list_item a p{
+    /* 2줄제한 */
+    line-height: var(--line-height-default);
+    height: calc(var(--line-height-default) * 2em);
+    overflow: hidden;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* 몇줄 */
+}
+.review .more{
+    position: absolute; /* wrapper를 기준으로 정렬 */
+    right: 0;
+    top: 0;
+}
+.review .more a{
+    display: flex;/* strong- span 좌우배치 */
+    align-items: center;
+    gap: 12px;
+    padding-right: 23px;
+    position: relative;/* after 정렬의 기준 */
+}
+.review .more a::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: calc(50% - 7.5px);
+    width: 15px;
+    height: 15px;
+    background-image: var(--icon-more);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.review .more a strong{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tit);
+    color: var(--color-sub1);
+}
+@media screen and (max-width:768px){
+    .review h2{
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .review .more a{
+        width: 28px;
+        height: 28px;
+        border: 1px solid var(--font-color-default);
+        border-radius: 50%;
+        padding-right: 0;
+    }
+    .review .more a::after{
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-size: 11px;
+    }
+    .review .more a strong{
+        display: none;
+    }
+    .review .more a span{
+        display: none;
+    }
+}
+
