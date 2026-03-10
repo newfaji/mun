@@ -108,3 +108,250 @@
                     width: 128px; /* 높이는 비율에 맞게 알아서 */
                 }
 }
+
+/* 입양후기 */
+.cnt_notice{
+    margin: 0 0 clamp(50px, 10vw, 100px) 0;
+}
+.cnt_notice .notice_wrap{
+    width: 952px;
+    margin: 0 auto;
+}
+@media screen and (max-width:1012px){ /* 952+30+30 */
+    .cnt_notice .notice_wrap{
+        width: auto;
+        margin: 0 var(--wrapper-margin);
+    }
+}
+.cnt_notice .search_wrap .search{
+    border: 2px solid var(--color-sub1);
+    border-radius: 50px;
+    height: clamp(56px, 8.5vw, 85px);
+    display: flex; /* keyword-btn 좌우배치 */
+    justify-content: space-between;
+    padding: 0 0 0 clamp(74px, 11.2vw, 112px);
+    position: relative; /* before 정렬의 기준 */
+}
+.cnt_notice .search_wrap .search::before{
+    content: "";
+    position: absolute;
+    left: clamp(22px, 3.3vw, 33px);
+    top: clamp(11px, 1.9vw, 19px);
+    width: clamp(30px, 4.5vw, 45px);
+    height: clamp(30px, 4.4vw, 44px);
+    background: url(../images/contents/notice_search_ico.svg) no-repeat center center / contain;
+}
+.cnt_notice .search_wrap .search label{
+    display: none;
+}
+.cnt_notice .search_wrap .search .keyword{
+    width: calc(100% - clamp(70px, 12.4vw, 124px));
+    font-size: clamp(18px, 2.4vw, 24px);
+    font-weight: var(--font-weight-bold);
+    color: var(--font-color-tit);
+    border: 0;
+    outline: 0; /* 입력창이 선택되었을때 나타나는 검은 테두리 */
+}
+.cnt_notice .search_wrap .search .keyword::placeholder{
+    font-weight: var(--font-weight-default);
+    color: #8C8C8C;
+}
+.cnt_notice .search_wrap .search .btn{
+    width: clamp(60px, 9.4vw, 94px);
+    border: 0;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg width='39' height='38' viewBox='0 0 39 38' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.4239 28.1081C10.3926 28.1081 6.9808 26.7477 4.18848 24.027C1.39616 21.3063 0 17.982 0 14.0541C0 10.1261 1.39616 6.8018 4.18848 4.08108C6.9808 1.36036 10.3926 0 14.4239 0C18.4552 0 21.867 1.36036 24.6593 4.08108C27.4516 6.8018 28.8478 10.1261 28.8478 14.0541C28.8478 15.6396 28.5889 17.1351 28.0711 18.5405C27.5533 19.9459 26.8506 21.1892 25.963 22.2703L38.3898 34.3784C38.7966 34.7748 39 35.2793 39 35.8919C39 36.5045 38.7966 37.009 38.3898 37.4054C37.9829 37.8018 37.4651 38 36.8364 38C36.2077 38 35.6899 37.8018 35.2831 37.4054L22.8563 25.2973C21.7468 26.1622 20.4708 26.8468 19.0284 27.3514C17.5861 27.8559 16.0512 28.1081 14.4239 28.1081ZM14.4239 23.7838C17.1977 23.7838 19.5555 22.8378 21.4972 20.9459C23.4388 19.0541 24.4097 16.7568 24.4097 14.0541C24.4097 11.3514 23.4388 9.05405 21.4972 7.16216C19.5555 5.27027 17.1977 4.32432 14.4239 4.32432C11.6501 4.32432 9.29232 5.27027 7.35064 7.16216C5.40896 9.05405 4.43812 11.3514 4.43812 14.0541C4.43812 16.7568 5.40896 19.0541 7.35064 20.9459C9.29232 22.8378 11.6501 23.7838 14.4239 23.7838Z' fill='%23014CA9'/%3E%3C/svg%3E%0A");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: clamp(30px, 3.9vw, 39px);
+    cursor: pointer; /* 위에 올렸을때 마우스 포인트를 손바닥으로 */
+}
+.cnt_notice .join_wrap .agree_box{
+    margin: clamp(60px, 10vw, 103px) 0 0 0;
+}
+.cnt_notice .join_wrap h2{
+    font-size: var(--font-size-tit);
+    font-weight: var(--font-weight-bold);
+    color: var(--font-color-tit);
+    line-height: var(--line-height-tit);
+    margin: 0 0 clamp(24px, 3.6vw, 36px) 0;
+}
+.cnt_notice .join_wrap .agree_box .agree_txt{
+    border: 1px solid #ccc;
+    height: clamp(200px, 40vw, 400px);
+    padding: clamp(20px, 3.5vw, 35px);
+    overflow-y: auto;  /* 안에 p태그가 더 길면 스크롤바 생성 */
+}
+.cnt_notice .join_wrap .agree_box .agree_txt p{
+    white-space: pre-line;
+}
+.cnt_notice .join_wrap .agree_box .agree_chk{
+    margin: clamp(15px, 3vw, 30px) 0 0 0;
+    display: flex; /* item 좌우배치 */
+    justify-content: center;
+    gap: 0 clamp(40px, 9.4vw, 94px);
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: var(--font-weight-bold);
+}
+.cnt_notice .join_wrap .agree_box .agree_chk .item{
+    display: flex;
+}
+.cnt_notice .join_wrap .agree_box .agree_chk label{
+    display: block;
+    padding: 0 0 0 1.9em; /* 아이콘 들어갈 자리 */
+    position: relative; /* before 정렬의 기준 */
+    cursor: pointer;
+}
+.cnt_notice .join_wrap .agree_box .agree_chk label::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.45em;
+    height: 1.45em;
+    background-image: url("data:image/svg+xml,%3Csvg width='29' height='29' viewBox='0 0 29 29' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.7877 18.8174L20.4608 11.2673C20.6419 11.0891 20.8532 11 21.0946 11C21.3361 11 21.5473 11.0891 21.7284 11.2673C21.9095 11.4454 22 11.657 22 11.902C22 12.147 21.9095 12.3586 21.7284 12.5367L13.4215 20.7327C13.2404 20.9109 13.0291 21 12.7877 21C12.5463 21 12.335 20.9109 12.1539 20.7327L8.26075 16.902C8.07967 16.7238 7.99291 16.5122 8.00045 16.2673C8.008 16.0223 8.10231 15.8107 8.28339 15.6325C8.46446 15.4543 8.67949 15.3653 8.92847 15.3653C9.17746 15.3653 9.39249 15.4543 9.57356 15.6325L12.7877 18.8174Z' fill='%23787878'/%3E%3Ccircle cx='14.5' cy='14.5' r='13.5' stroke='%23787878' stroke-width='2'/%3E%3C/svg%3E%0A");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+/* 체크된 input 태그 뒤에 오는 label만 */
+.cnt_notice .join_wrap .agree_box .agree_chk input:checked + label::before{
+    background-image: url("data:image/svg+xml,%3Csvg width='29' height='29' viewBox='0 0 29 29' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14.5' cy='14.5' r='14.5' fill='%23014CA9'/%3E%3Cpath d='M12.7877 18.8174L20.4608 11.2673C20.6419 11.0891 20.8532 11 21.0946 11C21.3361 11 21.5473 11.0891 21.7284 11.2673C21.9095 11.4454 22 11.657 22 11.902C22 12.147 21.9095 12.3586 21.7284 12.5367L13.4215 20.7327C13.2404 20.9109 13.0291 21 12.7877 21C12.5463 21 12.335 20.9109 12.1539 20.7327L8.26075 16.902C8.07967 16.7238 7.99291 16.5122 8.00045 16.2673C8.008 16.0223 8.10231 15.8107 8.28339 15.6325C8.46446 15.4543 8.67949 15.3653 8.92847 15.3653C9.17746 15.3653 9.39249 15.4543 9.57356 15.6325L12.7877 18.8174Z' fill='white'/%3E%3C/svg%3E%0A");
+}
+.cnt_notice .join_wrap .agree_box .agree_chk input{
+    display: none;
+}
+.cnt_notice .join_wrap .join_box{
+    margin: clamp(50px, 8.9vw, 89px) 0 0 0;
+}
+.cnt_notice .join_wrap .join_box .join_info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+}
+.cnt_notice .join_wrap .join_box .join_info .item{
+    display: flex;
+    justify-content: space-between;
+}
+/* item안에 tit 위에 있는 모든 것... */
+.cnt_notice .join_wrap .join_box .join_info .item .tit + *{
+    width: calc(100% - 124px);
+}
+.cnt_notice .join_wrap .join_box .join_info .item .tit{
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: var(--font-weight-bold);
+}
+.cnt_notice .join_wrap .join_box .join_info .item select,
+.cnt_notice .join_wrap .join_box .join_info .item input[type="text"],
+.cnt_notice .join_wrap .join_box .join_info .item input[type="password"],
+.cnt_notice .join_wrap .join_box .join_info .item textarea{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 0 25px;
+    height: 58px;
+}
+.cnt_notice .join_wrap .join_box .join_info .item textarea{
+    height: 244px;
+    padding: 25px;
+    resize: none;
+}
+.cnt_notice .join_wrap .join_box .join_info .item .group{
+    display: flex;
+    gap: 0 43px;
+}
+.cnt_notice .join_wrap .join_box .join_info .item .group label{
+    padding: 0 0 0 41px;
+    position: relative;/* before 정렬의 기준 */
+    cursor: pointer; /* 마우스를 오버하면 손가락 모양으로 변하기 */
+}
+.cnt_notice .join_wrap .join_box .join_info .item .group label::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25px;
+    height: 25px;
+    background-image: url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='24' height='24' stroke='%23787878'/%3E%3Cpath d='M10.7877 15.8174L18.4608 8.26726C18.6419 8.08909 18.8532 8 19.0946 8C19.3361 8 19.5473 8.08909 19.7284 8.26726C19.9095 8.44543 20 8.65702 20 8.902C20 9.14699 19.9095 9.35857 19.7284 9.53675L11.4215 17.7327C11.2404 17.9109 11.0291 18 10.7877 18C10.5463 18 10.335 17.9109 10.1539 17.7327L6.26075 13.902C6.07967 13.7238 5.99291 13.5122 6.00045 13.2673C6.008 13.0223 6.10231 12.8107 6.28339 12.6325C6.46446 12.4543 6.67949 12.3653 6.92847 12.3653C7.17746 12.3653 7.39249 12.4543 7.57356 12.6325L10.7877 15.8174Z' fill='%23787878'/%3E%3C/svg%3E%0A");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.cnt_notice .join_wrap .join_box .join_info .item .group input:checked + label::before{
+    background-image: url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='25' height='25' fill='%23014CA9'/%3E%3Cpath d='M10.7877 15.8174L18.4608 8.26726C18.6419 8.08909 18.8532 8 19.0946 8C19.3361 8 19.5473 8.08909 19.7284 8.26726C19.9095 8.44543 20 8.65702 20 8.902C20 9.14699 19.9095 9.35857 19.7284 9.53675L11.4215 17.7327C11.2404 17.9109 11.0291 18 10.7877 18C10.5463 18 10.335 17.9109 10.1539 17.7327L6.26075 13.902C6.07967 13.7238 5.99291 13.5122 6.00045 13.2673C6.008 13.0223 6.10231 12.8107 6.28339 12.6325C6.46446 12.4543 6.67949 12.3653 6.92847 12.3653C7.17746 12.3653 7.39249 12.4543 7.57356 12.6325L10.7877 15.8174Z' fill='white'/%3E%3C/svg%3E%0A");
+}
+.cnt_notice .join_wrap .join_box .join_info .item .group input {
+    display: none;
+}
+@media screen and (max-width:768px){
+    .cnt_notice .join_wrap .join_box .join_info{
+        gap: 20px 0;
+    }
+    .cnt_notice .join_wrap .join_box .join_info .item{
+        flex-direction: column;
+        gap: 5px 0;
+    }
+    .cnt_notice .join_wrap .join_box .join_info .item .tit + *{
+        width: 100%;
+    }
+}
+.cnt_notice .join_wrap .join_box .join_btn{
+    margin: 36px 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 0 7px;
+}
+.cnt_notice .join_wrap .join_box .join_btn a,
+.cnt_notice .join_wrap .join_box .join_btn input,
+.cnt_notice .join_wrap .join_box .join_btn button{
+    display: block;
+    height: 47px; /*태그가 다른 요소가 같은 높이로 있으면 padding으로 높이 못맞춤 */
+    line-height: 47px; /* 글자를 높이의 위아래가운데 높이 = 행간 같게줌 */
+    padding: 0 28px;
+    background-color: #787878;
+    border-radius: 30px;
+    border: 0;
+    color: #fff;
+    font-size: 20px;
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;    
+}
+.cnt_notice .join_wrap .join_box .join_btn .ok{
+    background-color: var(--color-sub1);
+}
+
+/* 자원봉사 모집 */
+.cnt_support{
+     margin: 0 0 clamp(50px, 9vw, 90px) 0;
+}
+.cnt_support .table_wrap{
+    overflow-x: auto;
+}
+.cnt_support .table_wrap table{
+    min-width: 600px;
+    border-top: 3px solid var(--color-sub1);
+}
+.cnt_support .table_wrap table th,
+.cnt_support .table_wrap table td{
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: clamp(5px, 2vw, 20px);
+}
+.cnt_support .table_wrap table th:first-child,
+.cnt_support .table_wrap table td:first-child{
+    border-left: 0;
+}
+.cnt_support .table_wrap table th:last-child,
+.cnt_support .table_wrap table td:last-child{
+    border-right: 0;
+}
+.cnt_support .table_wrap table thead th{
+    background-color: #F4F4F4;
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: var(--font-weight-bold);
+    color: var(--font-color-tit);
+}
+.cnt_support .table_wrap table tbody th{
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: var(--font-weight-bold);
+    color: var(--font-color-tit);
+}
