@@ -437,11 +437,6 @@
     }
 }
 
-.footer {
-    background-color: #1d1d1d;
-    color: #fff;
-}
-
 .sec_nav {
     position: fixed;/* 브라우저를 기준으로 정렬함 */
     left: 32px;
